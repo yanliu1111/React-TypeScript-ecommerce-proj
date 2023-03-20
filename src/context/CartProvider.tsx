@@ -1,4 +1,4 @@
-import { useMemo, useReducer } from "react";
+import { createContext, ReactElement, useMemo, useReducer } from "react";
 
 export type CartItemType = {
   sku: string;
@@ -109,3 +109,24 @@ const useCartContext = (initCartState: CartStateType) => {
   // I created custom hook that doesn't mean they won't cause a re-render, it is just another way to approach it and memorization only helps when we would use react.memo, that would only help if we were passing things down as props
   return { dispatch, REDUCER_ACTIONS, cart, totalItems, totalPrice };
 };
+export type UseCartContextType = ReturnType<typeof useCartContext>;
+//initializing UseCartContextType
+const initCartContextState: UseCartContextType = {
+  dispatch: () => {},
+  REDUCER_ACTIONS: REDUCER_ACTION_TYPE,
+  totalItems: 0,
+  totalPrice: " ",
+  cart: [],
+};
+export const CartContext =
+  createContext<UseCartContextType>(initCartContextState);
+//the childrentype is essentially equal to that same children type that I defined in the products context. Other way, I could keep this in another file and import it to use in both files if I want to export it from that.
+type ChildrenType = { children?: ReactElement | ReactElement[] };
+export const CartProvider = ({ children }: ChildrenType): ReactElement => {
+  return (
+    <CartContext.Provider value={useCartContext(initCartState)}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+export default CartContext;
