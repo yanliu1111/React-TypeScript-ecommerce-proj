@@ -1,6 +1,6 @@
 # React-TypeScript Shopping Cart project
 
-Project was deployed at https://react-typescript-shopping-cart.netlify.app/
+Project was deployed at https://yanliu1111.github.io/React-TypeScript-ecommerce-proj/
 
 This project is a simple shopping cart application built with React and TypeScript. It is a work in progress and will be updated as I learn more about React and TypeScript.
 
