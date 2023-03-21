@@ -105,7 +105,7 @@ const MemoizedCartLineItem = memo<typeof CartLineItem>(
   CartLineItem,
   areItemsEqual
 );
-//you can use react Dev tools to see if the component is re-rendering and it shouldnt re-render, only when the props change; if you just changed the quantity of one item, it should not re-render the whole list
+//you can use react Dev tools to see if the component is re-rendering and it shouldnt re-render, only when the props change; if you just changed the quantity of one item, it should not re-render the whole product list
 
 // memo is a higher order component that will only re-render if the props change
 //build a function to compare the props and if they are the same then it will not re-render
