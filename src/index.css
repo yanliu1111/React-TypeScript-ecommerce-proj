@@ -24,8 +24,9 @@ select {
 img {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 76%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 #root {

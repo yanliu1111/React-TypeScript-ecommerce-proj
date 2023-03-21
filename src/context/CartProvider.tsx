@@ -86,6 +86,7 @@ const useCartContext = (initCartState: CartStateType) => {
   const [state, dispatch] = useReducer(reducer, initCartState);
   //what we done is memoize that reducer action type so its always so it always has the same referential equality when we pass it into a component and that will help us memoize the component in the future without worrying about the reducer actions causing a re-render
   const REDUCER_ACTIONS = useMemo(() => {
+    // Reducer_action is a constant so it will never change, so we can use useMemo to memoize it so it will always have the same referential equality
     return REDUCER_ACTION_TYPE;
   }, []);
   const totalItems: number = state.cart.reduce((previousValue, cartItem) => {
