@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement } from "react";
+import { ChangeEvent, ReactElement, memo } from "react";
 import { CartItemType } from "../context/CartProvider";
 import { ReducerAction, ReducerActionType } from "../context/CartProvider";
 
@@ -88,5 +88,26 @@ const CartLineItem = ({
 
   return content;
 };
+//others all are memorized in the context, expect items, so we need to compare to make sure that the items are the same number, so we need use this function and memo accepts the function as the second argument
+function areItemsEqual(
+  { item: prevItem }: PropsType,
+  { item: nextProps }: PropsType
+) {
+  return Object.keys(prevItem).every((key) => {
+    return (
+      prevItem[key as keyof CartItemType] ===
+      nextProps[key as keyof CartItemType]
+    );
+  });
+}
+
+const MemoizedCartLineItem = memo<typeof CartLineItem>(
+  CartLineItem,
+  areItemsEqual
+);
+//you can use react Dev tools to see if the component is re-rendering and it shouldnt re-render, only when the props change; if you just changed the quantity of one item, it should not re-render the whole list
+
+// memo is a higher order component that will only re-render if the props change
+//build a function to compare the props and if they are the same then it will not re-render
 
 export default CartLineItem;
