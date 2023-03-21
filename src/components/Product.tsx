@@ -1,6 +1,6 @@
 import { ProductType } from "../context/ProductsProvider";
 import { ReducerActionType, ReducerAction } from "../context/CartProvider";
-import { ReactElement } from "react";
+import { ReactElement, memo } from "react";
 
 type PropsType = {
   product: ProductType;
@@ -47,4 +47,22 @@ const Product = ({
   return content;
 };
 
-export default Product;
+//create comparing function
+function areProductsEuqal(
+  { product: prevProduct, inCart: prevInCart }: PropsType,
+  { product: nextProduct, inCart: nextInCart }: PropsType
+) {
+  return (
+    Object.keys(prevProduct).every((key) => {
+      return (
+        prevProduct[key as keyof ProductType] ===
+        nextProduct[key as keyof ProductType]
+      );
+    }) && prevInCart === nextInCart
+    //beacause InCart is a boolean, we can just compare them, dont need to turn into array
+  );
+}
+
+//I want a memoized product
+const MemoizedProduct = memo<typeof Product>(Product, areProductsEuqal);
+export default MemoizedProduct;

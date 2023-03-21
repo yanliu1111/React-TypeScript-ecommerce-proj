@@ -110,4 +110,4 @@ const MemoizedCartLineItem = memo<typeof CartLineItem>(
 // memo is a higher order component that will only re-render if the props change
 //build a function to compare the props and if they are the same then it will not re-render
 
-export default CartLineItem;
+export default MemoizedCartLineItem;
