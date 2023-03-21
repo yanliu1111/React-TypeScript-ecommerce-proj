@@ -12,7 +12,7 @@ const Nav = ({ viewCart, setViewCart }: PropsType) => {
 
   const content = <nav className="nav">{button}</nav>;
 
-  return <div className="nav">{button}</div>;
+  return content;
 };
 
 export default Nav;
