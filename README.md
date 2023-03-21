@@ -1,5 +1,7 @@
 # React-TypeScript Shopping Cart project
 
+Project was deployed at https://react-typescript-shopping-cart.netlify.app/
+
 This project is a simple shopping cart application built with React and TypeScript. It is a work in progress and will be updated as I learn more about React and TypeScript.
 
 ## Getting Started
@@ -12,7 +14,11 @@ cd react-typescript-shopping-cart
 npm install
 ```
 
-Json-server is used to serve the data for the products. To start the server, run the following command.
+## Launching the data
+
+One way is hard-coding;
+Anther way is to use json-server to serve the data for the products, run the following command.
+I used both here, watch the comments in the code.
 
 ```bash
 npx json-server -w data/products.json -p 3500
