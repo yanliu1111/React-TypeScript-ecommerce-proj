@@ -31,9 +31,9 @@ const Product = ({
   const itemInCart = inCart ? " → Item in Cart: ✔️" : null;
   const content = (
     <article className="product">
-      <h3>{product.name}</h3>
+      <h3 className="product-name">{product.name}</h3>
       <img src={img} alt={product.name} className="product__img" />
-      <p>
+      <p className="product__priceText">
         {new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
